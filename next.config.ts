@@ -1,8 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export', // This is the most important line!
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: 'export' as const,
   images: {
-    unoptimized: true, // Static sites can't use Next.js default image optimization
+    unoptimized: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 

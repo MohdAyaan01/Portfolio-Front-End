@@ -108,7 +108,7 @@ const DashboardContent = () => {
             const Token = localStorage.getItem('token');
             if (!StoredUser || StoredUser === 'undefined') {
                 try {
-                    const res = await axios.get("http://localhost:5000/api/auth/user/me", {
+                    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/user/me`, {
                         headers: {
                             Authorization: `Bearer ${Token}`
                         }
@@ -128,7 +128,7 @@ const DashboardContent = () => {
             console.log("Current User For History", user);
             if (user?._id) {
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/auth/user/history/${user._id}`, {
+                    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/user/history/${user._id}`, {
                         headers: {
                             Authorization: `Bearer ${Token}`
                         }
@@ -169,7 +169,7 @@ const DashboardContent = () => {
 
 
         try {
-            const response = await axios.post("http://localhost:5000/api/portfolio/generate", formData, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolio/generate`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'
