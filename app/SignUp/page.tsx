@@ -102,7 +102,7 @@ export default function SignUpPage() {
                             width="250"
                             onSuccess={async (credentialResponse) => {
                                 try {
-                                    const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/user/google`, {
+                                    const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/user/google-login`, {
                                         token: credentialResponse.credential
                                     }, { withCredentials: true });
                                     if (res.data.success) {
