@@ -23,7 +23,7 @@ const PaymentButton = ({ className, children }: PaymentButtonProps) =>{
         if(!res){
             toast.error("Razorpay Failed To Load");
         }
-        const {data}  = await axios.post("http://localhost:5000/api/payment/create-order");
+        const {data}  = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payment/create-order`);
         const option = {
             key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
             amount: data.order.amount,
@@ -33,7 +33,7 @@ const PaymentButton = ({ className, children }: PaymentButtonProps) =>{
             order_id:data.order.id,
 
             handler:async function(response:any){
-                const verify = await axios.post("http://localhost:5000/api/payment/verify-payment",response);
+                const verify = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payment/verify-payment`,response);
                 if(verify.data.success){
                     toast.success("Payment Success")
                 }else{
