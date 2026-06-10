@@ -11,7 +11,7 @@ export default function HelpPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        // Simulate submission
+       
         setTimeout(() => {
             setSubmitting(false);
             alert("Your message has been sent to our team.");
@@ -20,7 +20,7 @@ export default function HelpPage() {
 
     return (
         <div className="min-h-screen bg-[#09090B] text-[#E0E0E0] flex flex-col items-center justify-center px-6 py-20 font-sans">
-            {/* Back Button */}
+          
             <Link
                 href="/Dash"
                 className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-rose-500 transition-colors font-bold text-[10px] uppercase tracking-widest group bg-white/5 w-fit px-4 py-1.5 rounded-full border border-white/5 hover:border-rose-500/20"
@@ -29,7 +29,7 @@ export default function HelpPage() {
                 Back to Dashboard
             </Link>
 
-            {/* Background Decor */}
+         
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-rose-900/10 rounded-full blur-[150px] pointer-events-none" />
@@ -40,7 +40,7 @@ export default function HelpPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full max-w-xl relative"
             >
-                {/* Branding Glow */}
+             
                 <div className="absolute -inset-1 bg-gradient-to-r from-rose-500/10 to-rose-900/20 rounded-[2.5rem] blur-xl" />
 
                 <div className="relative bg-[#09090B]/60 backdrop-blur-3xl border border-zinc-800/80 rounded-[2.5rem] p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)]">

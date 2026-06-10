@@ -10,12 +10,13 @@ export interface AppEntry {
     date: string;
     image: string;
     stats: AppStats;
+    isPremium?: boolean; 
 }
 
 export const workspaceApps: AppEntry[] = [];
 
 export const communityApps: AppEntry[] = [
-    // --- Featured / Impressive Demos ---
+ 
     { title: "AI Power Builder", type: "Community", date: "Mar 28", image: "/OneFolio.png", stats: { docs: 45, users: 1200, shares: 3400 } },
     { title: "Mary Hardy Portfolio", type: "Community", date: "Mar 27", image: "/TwoFolio.png", stats: { docs: 22, users: 890, shares: 1560 } },
     { title: "Alex Clark Dev", type: "Community", date: "Mar 26", image: "/ThreeFolio.png", stats: { docs: 12, users: 450, shares: 890 } },

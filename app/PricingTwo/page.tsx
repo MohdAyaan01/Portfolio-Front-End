@@ -37,7 +37,7 @@ const PricingPage = () => {
 
     return (
         <div className="min-h-screen bg-[#09090B] text-white overflow-hidden pb-20 relative">
-            {/* Top Back Button */}
+           
             <Link
                 href="/Dash"
                 className="absolute top-8 left-8 z-50 flex items-center gap-2 text-zinc-500 hover:text-rose-500 transition-colors font-bold text-[10px] uppercase tracking-widest group bg-white/5 w-fit px-4 py-1.5 rounded-full border border-white/5 hover:border-rose-500/20"
@@ -46,14 +46,14 @@ const PricingPage = () => {
                 Back to Dashboard
             </Link>
 
-            {/* Background Decorations */}
+           
             <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-rose-900/10 rounded-full blur-[150px] pointer-events-none" />
             </div>
 
             <div className="relative pt-32 px-4 max-w-7xl mx-auto flex flex-col items-center">
-                {/* Header Section */}
+              
                 <div className="text-center mb-16 max-w-2xl">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[11px] font-bold text-teal-400 uppercase tracking-widest mb-6 translate-y-0 animate-in fade-in duration-700">
                         <Star size={12} fill="currentColor" />
@@ -66,7 +66,7 @@ const PricingPage = () => {
                         Transparent pricing for creators of all scales. No hidden fees.
                     </p>
 
-                    {/* Toggle */}
+             
                     <div className="flex items-center justify-center gap-4">
                         <span className={`text-sm ${!isAnnual ? 'text-white' : 'text-slate-500'} transition`}>Monthly</span>
                         <button 
@@ -79,7 +79,7 @@ const PricingPage = () => {
                     </div>
                 </div>
 
-                {/* Cards Grid */}
+             
                 <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8 w-full items-start">
                     {plans.map((plan, index) => (
                         <div 
@@ -88,10 +88,10 @@ const PricingPage = () => {
                                 relative group p-px rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:scale-[1.02]
                             `}
                         >
-                            {/* Card Border Flare */}
+                
                             <div className={`absolute inset-0 bg-gradient-to-b ${plan.border.replace('border-', 'from-')} to-transparent opacity-50 group-hover:opacity-100 transition`} />
                             
-                            {/* Card Body */}
+                       
                             <div className="relative h-full flex flex-col p-8 bg-[#0C0C0C]/80 backdrop-blur-3xl rounded-[2.5rem] border border-white/5">
                                 {plan.popular && (
                                     <div className="absolute top-4 right-4 px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-[10px] font-bold text-purple-300 uppercase tracking-widest">
@@ -137,7 +137,7 @@ const PricingPage = () => {
                     ))}
                 </div>
 
-                {/* FAQ Link or Footer Info */}
+                
                 <div className="mt-20 text-center">
                     <p className="text-slate-500 text-sm">
                         All plans include 14-day free trial. Need something else? 

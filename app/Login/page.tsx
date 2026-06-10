@@ -6,25 +6,25 @@ import { useRouter } from "next/navigation";
 import { GoogleLogin } from '@react-oauth/google';
 import { toast } from "react-hot-toast";
 export default function LoginPage() {
-    
+
     const [rememberMe, setRememberMe] = useState(false);
-    
+
     const router = useRouter();
 
     type FormData = {
-            email:string,
-            password:string,
-        }
-        const[formData,setFormData] = useState<FormData>({
-            email:"",
-            password:"", 
-        })
+        email: string,
+        password: string,
+    }
+    const [formData, setFormData] = useState<FormData>({
+        email: "",
+        password: "",
+    })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-      const submithandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    const submithandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData);
         try {
@@ -35,7 +35,8 @@ export default function LoginPage() {
                 withCredentials: true
             });
             if (res.data.success) {
-                console.log("Login successful, setting user:", res.data.user);
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
                 toast.success(res.data.message || 'Login successful!');
                 router.push("/Dash");
             }
@@ -81,11 +82,11 @@ export default function LoginPage() {
             `}</style>
 
             <div className="auth-page min-h-screen bg-[#0C0414] flex items-center justify-center px-4">
-                
+
                 <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-40 bg-[#D043FF] blur-[90px] opacity-25 z-0" />
 
                 <div className="auth-card relative z-10 w-full max-w-md bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl px-8 py-10 shadow-2xl">
-                    
+
                     <div className="mb-8 text-center">
                         <img src="/MyLogo.jpeg" alt="Logo" className="w-14 h-14 rounded-xl object-cover mx-auto mb-4" />
                         <h1 className="text-3xl font-semibold text-white">Sign in</h1>
@@ -104,6 +105,8 @@ export default function LoginPage() {
                                         token: credentialResponse.credential
                                     }, { withCredentials: true });
                                     if (res.data.success) {
+                                        localStorage.setItem('token', res.data.token);
+                                        localStorage.setItem('user', JSON.stringify(res.data.user));
                                         toast.success(res.data.message || 'Login successful!');
                                         router.push("/Dash");
                                     }
@@ -122,7 +125,7 @@ export default function LoginPage() {
                     </div>
 
                     <form onSubmit={submithandler} className="flex flex-col gap-4">
-                       
+
                         <div className="field-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" />
@@ -153,7 +156,7 @@ export default function LoginPage() {
                             />
                         </div>
 
-                        
+
                         <div className="flex items-center justify-between">
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input
@@ -174,7 +177,7 @@ export default function LoginPage() {
                             <a href="#" className="text-sm text-teal-400 hover:text-teal-300 transition">Forgot password?</a>
                         </div>
 
-                       
+
                         <button
                             type="submit"
                             className="mt-2 h-11 w-full cursor-pointer rounded-full bg-teal-500 hover:bg-teal-400 shadow-[0px_0px_20px_6px_rgba(20,184,166,0.35)] hover:shadow-[0px_0px_28px_10px_rgba(20,184,166,0.5)] text-white text-sm font-semibold transition duration-300"
@@ -183,7 +186,7 @@ export default function LoginPage() {
                         </button>
                     </form>
 
-                   
+
                     <p className="mt-6 text-center text-sm text-gray-500">
                         Don&apos;t have an account?{" "}
                         <Link href="/SignUp" className="text-teal-400 hover:text-teal-300 underline transition">

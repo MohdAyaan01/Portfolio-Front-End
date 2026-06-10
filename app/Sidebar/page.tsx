@@ -9,7 +9,7 @@ interface SidebarItem{
     primary?: boolean
 }
 const SidebarPage = () => {
-    // I added 'primary: false' to these so the check on line 34 doesn't crash
+ 
     const items:SidebarItem[] = [
         { icon: <Search size={20} />, label: "Search", href: "/Search", primary: false },
         { icon: <Users size={20} />, label: "Team", href: "/Team", primary: false },
@@ -23,7 +23,7 @@ const SidebarPage = () => {
                 <div className="absolute -inset-4 bg-gradient-to-b from-teal-500/20 via-purple-500/10 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                 <div className="relative flex flex-col gap-3 p-3 bg-black/40 backdrop-blur-2xl border border-white/5 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                    {/* Link your Logo to Profile */}
+                  
                     <Link href="/Profile">
                         <div className="w-12 h-12 mb-2 rounded-full overflow-hidden border border-white/10 p-1 hover:scale-110 transition duration-300 cursor-pointer">
                             <img src="/MyLogo.jpeg" alt="Logo" className="w-full h-full object-cover rounded-full" />

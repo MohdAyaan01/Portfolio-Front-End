@@ -28,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, sta
         className="group relative bg-[#121212]/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-teal-500/40 transition-all duration-500 shadow-2xl"
     >
         <Link href="/Dash" className="absolute inset-0 z-10" aria-label="View Dashboard"></Link>
-        {/* Card Image & Hover Overlay */}
+   
         <div className="aspect-video relative overflow-hidden bg-zinc-900">
             <img
                 src={image}
@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, sta
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-            {/* Interactive Hover Buttons */}
+        
             <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <button className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[11px] font-bold text-white hover:bg-white/20 transition shadow-xl">
                     Live Preview
@@ -48,13 +48,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, sta
                 </button>
             </div>
 
-            {/* Desktop Badge */}
+    
             <div className={`absolute top-4 left-4 px-2.5 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg text-[9px] font-bold uppercase tracking-widest ${isPremium ? 'text-teal-400' : 'text-emerald-400'}`}>
                 {isPremium ? 'Premium Demo' : 'Free'}
             </div>
         </div>
 
-        {/* Card Details */}
         <div className="p-5 flex items-center justify-between border-t border-white/[0.03] bg-white/[0.01]">
             <div className="flex items-center gap-3.5">
                 <div className={`w-9 h-9 rounded-2xl flex items-center justify-center text-[11px] font-extrabold ${type === 'Workspace' ? 'bg-teal-500/10 text-teal-400' : 'bg-indigo-500/10 text-indigo-400'} border border-white/5 shadow-inner`}>
@@ -93,8 +92,8 @@ const DashboardContent = () => {
     const [activeCategory, setActiveCategory] = useState('Featured');
 
     const [theme, setTheme] = useState({
-        primaryColor: '#14b8a6', // Default Teal
-        accentColor: '#6366f1',  // Default Indigo
+        primaryColor: '#14b8a6',
+        accentColor: '#6366f1', 
         fontFamily: 'sans'
     });
 
@@ -150,7 +149,7 @@ const DashboardContent = () => {
 
 
     const handleGenerate = async () => {
-        // 1. Check for token BEFORE doing anything
+      
         const token = localStorage.getItem('token');
         if (!token || token === 'undefined') {
             toast.error("Your session has expired. Redirecting to Login...");
@@ -188,7 +187,7 @@ const DashboardContent = () => {
     };
     return (
         <main className="ml-24 pt-28 px-10 pb-20 min-h-screen bg-[#050505] relative overflow-hidden">
-            {/* Hidden File Input */}
+      
             <input
                 type="file"
                 ref={fileInputRef}
@@ -200,7 +199,6 @@ const DashboardContent = () => {
             <div className="absolute top-[10%] right-[5%] w-[40%] h-[40%] bg-indigo-600/[0.03] blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[10%] left-[5%] w-[30%] h-[30%] bg-teal-600/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
-            {/* AI Chat Window */}
             <AnimatePresence>
                 {isChatOpen && (
                     <motion.div
@@ -333,14 +331,14 @@ const DashboardContent = () => {
                         className="bg-[#0C0C0C]/90 backdrop-blur-3xl p-10 md:p-16 rounded-[3rem] border border-white/5 relative overflow-hidden shadow-2xl"
                         style={{ fontFamily: theme.fontFamily === 'mono' ? 'monospace' : theme.fontFamily === 'serif' ? 'Georgia, serif' : 'system-ui, sans-serif' }}
                     >
-                        {/* Ambient Glow */}
+                       
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-[120px] rounded-full pointer-events-none opacity-20" style={{ backgroundColor: theme.primaryColor }} />
 
-                        {/* Top Accent Line */}
+                        
                         <div className="absolute top-0 left-0 w-full h-1.5 opacity-50" style={{ backgroundColor: theme.primaryColor, boxShadow: `0 0 20px ${theme.primaryColor}` }} />
 
                         <div className="relative z-10 flex flex-col xl:flex-row gap-12">
-                            {/* Left Column: Bio & Skills */}
+                        
                             <div className="flex-1 space-y-10">
                                 <div>
                                     <input
@@ -358,7 +356,7 @@ const DashboardContent = () => {
                                     />
                                 </div>
 
-                                {/* Skills */}
+                              
                                 {editableContent?.skills && (
                                     <div>
                                         <div className="flex items-center gap-3 mb-6">
@@ -382,7 +380,7 @@ const DashboardContent = () => {
                                 )}
                             </div>
 
-                            {/* Right Column: Projects */}
+                        
                             {editableContent?.projects && (
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-6">
@@ -510,7 +508,7 @@ const DashboardContent = () => {
                         date={portfolio.createdAt ? new Date(portfolio.createdAt).toDateString(): "Today"}
                         image={portfolio.image || "https://placeholder.com/image.png"}
                         stats={{ docs: 0, users: 0,shares:0 }}
-                      
+                         isPremium={portfolio.isPremium}
                     />
                 ))}
             </motion.div>

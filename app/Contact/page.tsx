@@ -8,12 +8,12 @@ const ContactPage = () => {
         <div className="min-h-screen bg-[#0C0414] text-white relative overflow-hidden pb-20">
             <Header />
 
-            {/* Background Decorations */}
+    
             <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full point-events-none translate-x-1/2" />
             <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-teal-600/10 blur-[150px] rounded-full point-events-none -translate-x-1/2" />
 
             <div className="relative pt-32 px-4 max-w-7xl mx-auto">
-                {/* Header */}
+        
                 <div className="max-w-2xl mb-16">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[11px] font-bold text-teal-400 uppercase tracking-widest mb-6">
                         <Sparkles size={12} fill="currentColor" />
@@ -27,10 +27,9 @@ const ContactPage = () => {
                     </p>
                 </div>
 
-                {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     
-                    {/* Left: Contact Info */}
+                  
                     <div className="lg:col-span-5 space-y-12">
                         <div className="space-y-8">
                             {[
@@ -51,7 +50,7 @@ const ContactPage = () => {
                             ))}
                         </div>
 
-                        {/* Social Links */}
+                        
                         <div className="p-8 bg-black/40 backdrop-blur-3xl border border-white/5 rounded-[2.5rem] flex items-center justify-between">
                             <span className="text-sm font-medium text-slate-400">Socials</span>
                             <div className="flex gap-4">
@@ -64,10 +63,10 @@ const ContactPage = () => {
                         </div>
                     </div>
 
-                    {/* Right: Contact Form */}
+                  
                     <div className="lg:col-span-7">
                         <div className="relative group">
-                            {/* Form Border Glow */}
+                           
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500/20 via-purple-500/20 to-teal-500/20 rounded-[3rem] blur opacity-30 group-hover:opacity-60 transition duration-1000" />
                             
                             <form className="relative bg-[#0C0C0C] border border-white/10 p-10 md:p-12 rounded-[3rem] space-y-8 shadow-2xl">

@@ -18,6 +18,9 @@ interface MenuItems {
     href?: string;
 }
 const ProfileDropdown = ({ isOpen }: ProfileDropdown) => {
+    const userStr = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+    const user = userStr ? JSON.parse(userStr) : null;
+
     if (!isOpen) return null;
 
     const menuGroups: MenuItems[][] = [
@@ -44,19 +47,34 @@ const ProfileDropdown = ({ isOpen }: ProfileDropdown) => {
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             className="absolute top-full mt-2 right-0 w-[260px] bg-[#0A0A0A] border border-white/10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl overflow-hidden z-[100]"
         >
-            {/* User Header */}
-            <div className="p-5 flex items-center gap-3 border-b border-white/5">
-                <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
-                <div className="flex flex-col text-left">
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-white tracking-tight">Mohdayaan</span>
-                        <span className="px-1.5 py-0.5 bg-zinc-800 text-[9px] text-zinc-400 font-bold rounded uppercase tracking-widest">Free</span>
-                    </div>
-                    <span className="text-[11px] text-zinc-500">muhammadxayaan007@gmail.com</span>
+
+            <div className="flex flex-col text-left">
+                <div className="flex items-center gap-2">
+
+                    <span className="text-sm font-bold text-white tracking-tight">
+                        {user?.name ?? 'Guest'}
+                    </span>
+
+                    {user?.plan === 'PREMIUM' ? (
+                        <span className="flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-yellow-500 text-[9px] text-black font-extrabold rounded uppercase tracking-widest animate-pulse shadow-[0_0_12px_rgba(245,158,11,0.5)]">
+                            <Sparkles size={8} fill="currentColor" />
+                            Pro
+                        </span>
+                    ) : (
+                        <span className="px-1.5 py-0.5 bg-zinc-800 text-[9px] text-zinc-400 font-bold rounded uppercase tracking-widest">
+                            {user?.plan ?? 'Free'}
+                        </span>
+                    )}
+
                 </div>
+
+                <span className="text-[11px] text-zinc-500">
+                    {user?.email ?? ''}
+                </span>
             </div>
 
-            {/* Menu Items */}
+
+
             <div className="pb-2">
                 {menuGroups.map((group, gIdx) => (
                     <div key={gIdx} className="px-2 py-2 border-t border-white/5 first:border-t-0">
@@ -145,6 +163,9 @@ interface CreditsDropdownProps {
     isOpen: boolean;
 }
 const CreditsDropdown = ({ isOpen }: CreditsDropdownProps) => {
+    const userStr = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+    const user = userStr ? JSON.parse(userStr) : null;
+
     if (!isOpen) return null;
     return (
         <motion.div
@@ -155,16 +176,23 @@ const CreditsDropdown = ({ isOpen }: CreditsDropdownProps) => {
         >
             <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-4">
                 <div className="flex justify-between items-center mb-3">
-                    <span className="text-[11px] font-bold text-zinc-300">Free Plan</span>
+                    <span className="text-[11px] font-bold text-zinc-300">
+                        {user?.plan === 'PREMIUM' ? 'Premium Plan' : 'Free Plan'}
+                    </span>
                     <Settings size={12} className="text-zinc-600 hover:text-white cursor-pointer transition-colors" />
                 </div>
                 <div className="flex items-center gap-2 mb-3">
                     <Sparkles size={14} className="text-purple-400" />
                     <span className="text-xs font-semibold text-white">AI Credits</span>
-                    <span className="ml-auto text-xs font-bold text-white">0</span>
+                    <span className="ml-auto text-xs font-bold text-white">
+                        {user?.credits ?? 0}
+                    </span>
                 </div>
                 <div className="w-full h-1.5 bg-zinc-800 rounded-full mb-4 overflow-hidden">
-                    <div className="w-[10%] h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full" />
+                    <div
+                        className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-500"
+                        style={{ width: `${Math.min((user?.credits || 0) * 2, 100)}%` }}
+                    />
                 </div>
                 <div className="flex gap-2">
                     <button className="flex-1 py-2 bg-zinc-800 hover:bg-zinc-700 text-[10px] font-bold text-white rounded-xl transition flex items-center justify-center gap-2">
@@ -175,7 +203,7 @@ const CreditsDropdown = ({ isOpen }: CreditsDropdownProps) => {
                     </Link>
                 </div>
             </div>
-        </motion.div>
+        </motion.div >
     );
 };
 

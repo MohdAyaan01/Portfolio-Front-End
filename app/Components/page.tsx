@@ -22,18 +22,18 @@ const Header:React.FC = () => {
   return (
     <>
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 py-4">
-      {/* ── Glassmorphic Pill Navbar ── */}
+    
       <nav
         className="flex items-center justify-between w-full max-w-6xl
           border border-white/10 bg-black/60 backdrop-blur-xl
           px-6 py-3 rounded-full text-white text-sm shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
       >
-        {/* Logo */}
+       
         <Link href="#" className="flex items-center gap-2 shrink-0">
           <img src="MyLogo.jpeg" alt="Logo"  className="w-16 h-16" />
         </Link>
 
-        {/* Desktop Nav Links */}
+      
         <ul className="hidden md:flex items-center gap-4 ml-8">
           
           {navLinks.map(({ label, href }) => (
@@ -53,7 +53,7 @@ const Header:React.FC = () => {
           ))}
         </ul>
 
-        {/* Desktop CTA Buttons */}
+       
         <div className="hidden md:flex items-center gap-3 ml-auto pl-8">
           <Link
             href="/SignUp"
@@ -63,7 +63,7 @@ const Header:React.FC = () => {
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
+      
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden p-2 rounded-full border border-white/20 hover:bg-white/10 transition"
@@ -103,7 +103,7 @@ const Header:React.FC = () => {
         </button>
       </nav>
 
-      {/* ── Mobile Dropdown Menu ── */}
+ 
       {menuOpen && (
         <div
           className="absolute top-[76px] left-4 right-4 rounded-2xl

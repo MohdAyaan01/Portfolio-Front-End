@@ -23,13 +23,13 @@ export default function About() {
         <div className="min-h-screen bg-[#0C0414] text-white relative overflow-hidden pb-20">
             <Header />
 
-            {/* Background Decorations */}
+          
             <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-teal-600/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
 
             <div className="relative pt-32 px-4 max-w-7xl mx-auto">
-                {/* Header Section */}
+              
                 <motion.div 
                     initial="initial"
                     animate="animate"
@@ -61,10 +61,10 @@ export default function About() {
                     </motion.p>
                 </motion.div>
 
-                {/* Main Content Grid */}
+             
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-32">
                     
-                    {/* Left: Interactive Image/Card */}
+                    
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +96,7 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* Right: Features List */}
+                    
                     <div className="lg:col-span-7 space-y-10">
                         <motion.div 
                             initial="initial"
@@ -153,7 +153,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Stats Section */}
+                
                 <motion.div 
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -176,7 +176,7 @@ export default function About() {
                     ))}
                 </motion.div>
 
-                {/* CTA / Bottom Section */}
+            
                 <motion.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}

@@ -18,7 +18,7 @@ export default function Example() {
                 <div className="flex items-center gap-6 h-[400px] w-full max-w-5xl mt-10 mx-auto">
                     <div className="relative group flex-grow transition-all w-56 h-[400px] duration-500 hover:w-full">
                         <img className="h-full w-full object-cover object-center"
-                            src="PortOne.jpeg"
+                            src="/PortOne.jpeg"
                         
                             alt="image" />
                         <div
@@ -30,7 +30,7 @@ export default function Example() {
                     </div>
                     <div className="relative group flex-grow transition-all w-56 h-[400px] duration-500 hover:w-full">
                         <img className="h-full w-full object-cover object-right"
-                            src="PortTwo.jpeg"
+                            src="/PortTwo.jpeg"
                             
                             alt="image" />
                         <div
@@ -42,7 +42,7 @@ export default function Example() {
                     </div>
                     <div className="relative group flex-grow transition-all w-56 h-[400px] duration-500 hover:w-full">
                         <img className="h-full w-full object-cover object-center"
-                            src="PortThree.jpeg"
+                            src="/PortThree.jpeg"
                             
                             alt="image" />
                         <div

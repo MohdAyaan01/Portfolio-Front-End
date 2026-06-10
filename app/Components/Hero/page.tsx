@@ -36,7 +36,7 @@ const page: React.FC = () => {
           <div className="relative z-10 w-full h-80 md:h-[520px] lg:h-[600px]">
             <img
               className="w-full h-full object-cover object-top rounded-xl"
-              src="/HeroPort.jpeg"
+              src="/Home.png"
               alt="Portfolio preview"
             />
           </div>

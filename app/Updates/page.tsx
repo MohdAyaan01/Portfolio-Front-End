@@ -74,14 +74,14 @@ const UpdateBadge = ({ status }: UpdateBadgeProps) => {
 export default function UpdatesPage() {
     return (
         <div className="min-h-screen bg-[#09090B] text-zinc-100 font-sans selection:bg-rose-500/30 overflow-x-hidden">
-            {/* Background Effects */}
+    
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
                 <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-rose-900/10 rounded-full blur-[150px] pointer-events-none" />
             </div>
 
             <div className="relative max-w-4xl mx-auto px-6 py-24">
-                {/* Header */}
+               
                 <header className="mb-24 text-center">
                     <Link
                         href="/Dash"
@@ -103,7 +103,6 @@ export default function UpdatesPage() {
                     </p>
                 </header>
 
-                {/* Timeline */}
                 <div className="relative border-l border-zinc-900 ml-4 md:ml-0">
                     <div className="space-y-24">
                         {updates.map((update, index) => (
@@ -115,12 +114,11 @@ export default function UpdatesPage() {
                                 key={index}
                                 className="relative pl-12 md:pl-20"
                             >
-                                {/* Node */}
+                          
                                 <div className="absolute left-0 -translate-x-1/2 mt-1 w-4 h-4 bg-[#09090B] border-2 border-zinc-800 rounded-full z-10">
                                     <div className={`absolute inset-1 rounded-full ${update.status === 'LIVE' ? 'bg-[#F81156] shadow-[0_0_15px_rgba(244,63,94,0.5)]' : 'bg-zinc-700'}`} />
                                 </div>
 
-                                {/* Content */}
                                 <div className="group bg-[#09090b] border border-white/5 rounded-3xl p-8 md:p-10 transition-all duration-500 hover:border-white/10 hover:shadow-2xl">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                                         <div className="flex items-center gap-4">
@@ -162,11 +160,11 @@ export default function UpdatesPage() {
                         ))}
                     </div>
 
-                    {/* Timeline Line Extension */}
+                 
                     <div className="absolute top-0 bottom-0 left-0 -translate-x-1/2 w-[1px] bg-gradient-to-b from-rose-500/50 via-zinc-900 to-transparent" />
                 </div>
 
-                {/* Footer Section */}
+             
                 <footer className="mt-40 text-center">
                     <div className="inline-block p-12 bg-zinc-900/40 border border-white/5 rounded-[40px] text-center backdrop-blur-xl">
                         <Shield className="mx-auto mb-6 text-rose-500" size={32} />

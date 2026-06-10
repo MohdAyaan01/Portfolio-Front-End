@@ -11,10 +11,10 @@ export default function OnboardingTwo() {
 
   const handleFinish = () => {
     if (selectedFocus) {
-      // Save data, then redirect to dashboard
+     
       sessionStorage.setItem("profoliox_focus", selectedFocus);
-      // Let's redirect to Dashboard or Home
-      router.push('/Dash'); // Assuming dashboard is the final dest
+     
+      router.push('/Dash'); 
     }
   };
 
@@ -41,10 +41,10 @@ export default function OnboardingTwo() {
 
   return (
     <div className="min-h-screen bg-[#0C0414] text-white flex flex-col items-center justify-center relative overflow-hidden font-sans">
-      {/* Premium Background Glow Effect */}
+  
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-600/20 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Top Logo Area */}
+      
       <div className="absolute top-8 left-0 right-0 flex justify-center items-center z-10">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
@@ -63,7 +63,7 @@ export default function OnboardingTwo() {
         <h1 className="text-4xl font-bold mb-2 text-center">Pick your focus</h1>
         <p className="text-gray-400 mb-10 text-center">How will you use ProfolioX? We'll tailor the experience.</p>
 
-        {/* Options Grid */}
+   
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {focusOptions.map((option) => {
             const isSelected = selectedFocus === option.id;
@@ -80,7 +80,7 @@ export default function OnboardingTwo() {
                     : 'border-white/5 bg-[#1A1125]/80 hover:border-white/20 hover:bg-[#1A1125]'
                 }`}
               >
-                {/* Active Checkmark */}
+           
                 {isSelected && (
                   <div className="absolute top-3 right-3 w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
                     <Check size={14} className="text-white" />
@@ -99,7 +99,7 @@ export default function OnboardingTwo() {
           })}
         </div>
 
-        {/* Continue Button */}
+ 
         <button 
           onClick={handleFinish}
           disabled={!selectedFocus}
@@ -108,7 +108,7 @@ export default function OnboardingTwo() {
           Go to Dashboard <ArrowRight size={18} />
         </button>
 
-        {/* Progress Dots/Lines */}
+
         <div className="flex items-center gap-2 mt-12">
           <div className="w-8 h-1.5 rounded-full bg-white/20" />
           <div className="w-8 h-1.5 rounded-full bg-pink-500 shadow-[0_0_10px_var(--tw-shadow-color)] shadow-pink-500/50" />

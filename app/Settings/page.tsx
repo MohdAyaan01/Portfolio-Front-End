@@ -37,14 +37,13 @@ export default function SettingsPage() {
 
         <div className="min-h-screen bg-[#09090B] text-zinc-300 flex font-sans overflow-hidden">
 
-            {/* Back Button */}
-            {/* Background Pink/Red Glow effect (Left side) */}
+        
             <div className="fixed top-[20%] left-[-15%] w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
             <div className="fixed top-[60%] right-[-10%] w-[500px] h-[500px] bg-rose-900/10 rounded-full blur-[150px] pointer-events-none" />
 
-            {/* Sidebar */}
+    
             <aside className="w-64 border-r border-zinc-800/50 bg-[#09090B]/95 backdrop-blur-xl flex-shrink-0 flex flex-col relative z-10 hidden md:flex">
-                {/* Top Branding / Breadcrumb */}
+          
                 <div className="h-[100px] flex flex-col justify-center px-4 border-b border-zinc-800/50 gap-4">
                     <Link
                         href="/Dash"
@@ -56,14 +55,14 @@ export default function SettingsPage() {
 
                     <div className="flex items-center gap-3">
                         <div className="w-6 h-6 bg-white rounded-md flex items-center justify-center">
-                            {/* Simple logo placeholder */}
+                         
                             <div className="w-3 h-3 bg-black rounded-sm" />
                         </div>
                         <span className="text-sm font-medium text-white/80">Settings</span>
                     </div>
                 </div>
 
-                {/* Sidebar Links */}
+                
                 <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
                     {sidebarItems.map((item, index) => (
                         <motion.button
@@ -98,9 +97,9 @@ export default function SettingsPage() {
                 </div>
             </aside>
 
-            {/* Main Content */}
+        
             <main className="flex-1 flex flex-col relative z-10 overflow-y-auto w-full">
-                {/* Mobile Header */}
+          
                 <div className="h-14 flex items-center px-4 border-b border-zinc-800/50 md:hidden bg-[#09090B]">
                     <button className="text-white/60 hover:text-white">
                         <Menu className="w-5 h-5" />
@@ -108,9 +107,9 @@ export default function SettingsPage() {
                     <span className="ml-3 text-sm font-medium">Settings</span>
                 </div>
 
-                {/* Content Area Container */}
+                
                 <div className="flex-1 p-6 lg:p-10 max-w-4xl">
-                    {/* Header */}
+                    
                     <div className="mb-8">
                         <h1 className="text-2xl font-bold text-white mb-2">General</h1>
                         <p className="text-sm text-zinc-400">
@@ -121,7 +120,7 @@ export default function SettingsPage() {
                         </p>
                     </div>
 
-                    {/* Tabs */}
+                
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -149,7 +148,7 @@ export default function SettingsPage() {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
                         >
-                            {/* Change Password Section */}
+                        
 
                             {activeTab === "Password" && (
                                 <div className="space-y-8">
