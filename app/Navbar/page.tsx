@@ -23,6 +23,11 @@ const ProfileDropdown = ({ isOpen }: ProfileDropdown) => {
 
     if (!isOpen) return null;
 
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        window.location.href = '/Login'; // Redirect to login page
+    };
     const menuGroups: MenuItems[][] = [
         [
             { icon: <Moon size={14} />, label: "Appearance", hasArrow: true },
@@ -103,7 +108,7 @@ const ProfileDropdown = ({ isOpen }: ProfileDropdown) => {
                     <button className="w-full flex items-center gap-3 px-3 py-2.5 bg-rose-500/5 hover:bg-rose-500/10 rounded-xl transition text-rose-400 text-[12px] font-semibold mb-1">
                         <ExternalLink size={14} /> <span>Community Profile</span>
                     </button>
-                    <button className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-white/5 rounded-xl transition text-zinc-400 hover:text-white text-[12px] font-medium">
+                    <button onClick={handleLogout} className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-white/5 rounded-xl transition text-zinc-400 hover:text-white text-[12px] font-medium">
                         <LogOut size={14} /> <span>Log out</span>
                     </button>
                 </div>
