@@ -19,7 +19,7 @@ export default function SignUpPage() {
         name: "",
         email: "",
         password: "",
-      
+
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,8 +37,15 @@ export default function SignUpPage() {
                 withCredentials: true
             });
             if (res.data.success) {
-                toast.success(res.data.message || 'Account created!');
-                router.push("/Onboarding");
+                if (res.data.success) {
+
+                    localStorage.setItem('token', res.data.token);
+                    localStorage.setItem('user', JSON.stringify(res.data.user));
+
+                    toast.success(res.data.message || 'Account created!');
+                    router.push("/Onboarding");
+                }
+
             }
 
         } catch (error: any) {
@@ -106,6 +113,8 @@ export default function SignUpPage() {
                                         token: credentialResponse.credential
                                     }, { withCredentials: true });
                                     if (res.data.success) {
+                                        localStorage.setItem('token', res.data.token);
+                                        localStorage.setItem('user', JSON.stringify(res.data.user))
                                         toast.success('Google Login successful!');
                                         router.push("/Onboarding");
                                     }
