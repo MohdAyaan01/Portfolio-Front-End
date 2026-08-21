@@ -23,8 +23,6 @@ Profoliox is a premium, state-of-the-art **AI-Powered Portfolio Generator** that
 ![Profoliox Portfolio Demo](public/PortTwo.jpeg)
 *An example of a responsive, high-performance portfolio generated automatically by the Profoliox AI.*
 
----
-
 ## ⚡ Key Features
 
 - **🤖 Resume Parsing & AI Generation:** Upload a resume or provide a text prompt to instantly generate structured sections (About, Projects, Experience, Skills).
