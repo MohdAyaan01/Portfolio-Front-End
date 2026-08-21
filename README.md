@@ -32,8 +32,6 @@ Profoliox is a premium, state-of-the-art **AI-Powered Portfolio Generator** that
 - **🌐 Workspace & Community Hub:** Toggle between your personal workspace projects and public community portfolio templates.
 - **📱 Responsive & Animated UI:** Built with Tailwind CSS and Framer Motion for smooth micro-animations, transitions, and native mobile optimization.
 
----
-
 ## 🛠️ Technology Stack
 
 Profoliox is built with modern, industry-standard frontend technologies:
