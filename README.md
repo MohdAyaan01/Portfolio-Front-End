@@ -2,8 +2,6 @@
 
 Profoliox is a premium, state-of-the-art **AI-Powered Portfolio Generator** that enables developers, designers, and creators to design, build, and launch production-ready portfolio websites in minutes. Users can generate tailored portfolio layouts, content, and themes instantly using natural language prompts or by uploading their resume/CV.
 
----
-
 ## 📸 Screen Preview & Interface
 
 ### 🏠 Landing Page
