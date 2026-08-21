@@ -71,8 +71,6 @@ profoliox/
 └── package.json              # Script definitions & npm packages
 ```
 
----
-
 ## 🚀 Getting Started
 
 Follow these steps to run the frontend client locally on your development machine:
