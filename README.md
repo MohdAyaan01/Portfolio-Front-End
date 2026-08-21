@@ -45,8 +45,6 @@ Profoliox is built with modern, industry-standard frontend technologies:
 - **HTTP Client:** [Axios](https://axios-http.com/)
 - **Notifications:** [React Hot Toast](https://react-hot-toast.com/)
 
----
-
 ## 📂 Project Structure
 
 Here is an overview of the key frontend directories under `app/`:
