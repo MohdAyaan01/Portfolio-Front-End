@@ -212,7 +212,7 @@ const CreditsDropdown = ({ isOpen }: CreditsDropdownProps) => {
     );
 };
 
-// --- Main Navbar Component ---
+
 const NavbarDemo = () => {
     const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
     const [isMoreOpen, setIsMoreOpen] = useState<boolean>(false);
@@ -251,11 +251,7 @@ const NavbarDemo = () => {
         `}</style>
             <div className="absolute inset-0 bg-teal-500/20 blur-[60px] rounded-full scale-110 opacity-50" />
 
-            {/*
-              Single <div ref={navbarRef}> is the sole `position: relative` ancestor
-              for all three dropdowns — avoids the stacking-context / transform bug
-              that caused dropdowns to appear in the wrong position.
-            */}
+           
             <div ref={navbarRef} className="relative">
                 <nav className="flex items-center justify-between gap-6 px-6 py-2.5 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_15px_40px_rgba(0,0,0,0.6)] group">
                     {/* Left: Brand */}
@@ -269,7 +265,7 @@ const NavbarDemo = () => {
                         </div>
                     </div>
 
-                    {/* Center: Credits + Action Buttons */}
+           
                     <div className="hidden lg:flex items-center gap-3">
                         {/* Credits toggle */}
                         <button
@@ -284,9 +280,6 @@ const NavbarDemo = () => {
                             <Zap size={10} className={`${isCreditsOpen ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} transition-colors`} />
                         </button>
 
-                        {/* Upgrade button */}
-                        {/* Ensure you have: import Link from "next/link"; at the top of the file! */}
-
                         <Link href="/PricingTwo" className="button-bg inline-block rounded-full p-0.5 hover:scale-105 transition duration-300 active:scale-100">
                             {/* Note: I slightly reduced it to px-6 py-2 so it fits perfectly in a Navbar wrapper! */}
                             <div className="px-6 text-sm py-2 text-white rounded-full font-medium bg-gray-800 flex items-center justify-center">
@@ -294,9 +287,6 @@ const NavbarDemo = () => {
                             </div>
                         </Link>
 
-
-                        {/* Guide button */}
-                        {/* Ensure you have: import Link from "next/link"; at the top of the file! */}
 
                         <Link href="/Guide" className="button-bg inline-block rounded-full p-0.5 hover:scale-105 transition duration-300 active:scale-100">
                             {/* Note: I slightly reduced it to px-6 py-2 so it fits perfectly in a Navbar wrapper! */}
@@ -339,7 +329,7 @@ const NavbarDemo = () => {
                     </div>
                 </nav>
 
-                {/* All dropdowns live here — siblings of <nav>, inside the relative wrapper */}
+
                 <AnimatePresence>
                     {isCreditsOpen && <CreditsDropdown isOpen={isCreditsOpen} />}
                 </AnimatePresence>
