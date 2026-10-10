@@ -163,7 +163,8 @@ const DashboardContent = () => {
         const formData = new FormData();
         if (file) formData.append("resume", file);
         formData.append("prompt", promptValue);
-        formData.append("style", activeTab);
+        const backendStyle = activeTab === "Workspace" ? "Professional" : activeTab;
+        formData.append("style", backendStyle);
         formData.append("userId", user?._id || "");
 
 

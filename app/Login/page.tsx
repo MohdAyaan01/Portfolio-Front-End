@@ -35,8 +35,10 @@ export default function LoginPage() {
                 withCredentials: true
             });
             if (res.data.success) {
-                localStorage.setItem('token', res.data.data.token);
-                localStorage.setItem('user', JSON.stringify(res.data.data.user));
+                const { token, user } = res.data.data;
+                console.log('Login response data:', res.data.data);
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
                 toast.success(res.data.message || 'Login successful!');
                 router.push("/Dash");
             }
@@ -105,8 +107,10 @@ export default function LoginPage() {
                                         token: credentialResponse.credential
                                     }, { withCredentials: true });
                                     if (res.data.success) {
-                                        localStorage.setItem('token', res.data.token);
-                                        localStorage.setItem('user', JSON.stringify(res.data.user));
+                                        const { token, user } = res.data.data;
+                                        console.log('Google login response data:', res.data.data);
+                                        localStorage.setItem('token', token);
+                                        localStorage.setItem('user', JSON.stringify(user));
                                         toast.success(res.data.message || 'Login successful!');
                                         router.push("/Dash");
                                     }
