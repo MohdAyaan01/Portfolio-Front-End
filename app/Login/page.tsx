@@ -35,8 +35,8 @@ export default function LoginPage() {
                 withCredentials: true
             });
             if (res.data.success) {
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('user', JSON.stringify(res.data.user));
+                localStorage.setItem('token', res.data.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.data.user));
                 toast.success(res.data.message || 'Login successful!');
                 router.push("/Dash");
             }
