@@ -6,11 +6,20 @@ import { workspaceApps, communityApps } from './data';
 import Link from 'next/link';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import DarkSpaceTemplate from '../templates/DarkSpaceTemplates';
 
 type Stats = {
     docs: number,
     users: number,
     shares: number
+};
+
+type PortfolioResult = {
+    data: {
+        content: string;
+        [key: string]: any;
+    };
+    [key: string]: any;
 };
 
 type ProjectCardProps = {
@@ -88,7 +97,7 @@ const DashboardContent = () => {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [prompt, setPrompt] = useState("");
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState<PortfolioResult | null>(null);
     const [activeCategory, setActiveCategory] = useState('Featured');
 
     const [theme, setTheme] = useState({
