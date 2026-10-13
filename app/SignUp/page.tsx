@@ -36,18 +36,15 @@ export default function SignUpPage() {
                 },
                 withCredentials: true
             });
-            if (res.data.success) {
+         
                 if (res.data.success) {
 
-                    localStorage.setItem('token', res.data.token);
-                    localStorage.setItem('user', JSON.stringify(res.data.user));
+                    localStorage.setItem('token', res.data.data.token);
+                    localStorage.setItem('user', JSON.stringify(res.data.data.user));
 
                     toast.success(res.data.message || 'Account created!');
                     router.push("/Onboarding");
                 }
-
-            }
-
         } catch (error: any) {
             console.log(error);
             toast.error(error.response?.data?.message || 'Sign up failed. Please try again.')

@@ -107,8 +107,8 @@ export default function LoginPage() {
                                         token: credentialResponse.credential
                                     }, { withCredentials: true });
                                     if (res.data.success) {
-                                        const { token, user } = res.data.data;
-                                        console.log('Google login response data:', res.data.data);
+                                        const { token, user } = res.data;
+                                        console.log('Google login response data:', res.data);
                                         localStorage.setItem('token', token);
                                         localStorage.setItem('user', JSON.stringify(user));
                                         toast.success(res.data.message || 'Login successful!');
