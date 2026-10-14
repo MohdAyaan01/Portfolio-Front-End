@@ -21,9 +21,27 @@ Profoliox is a premium, state-of-the-art **AI-Powered Portfolio Generator** that
 ![Profoliox Dashboard Customizer](public/DashTwo.png)
 *The workspace sidebar and customizer allowing real-time adjustments to branding, custom themes, and templates.*
 
-### 🎨 Live Portfolio Preview
-![Profoliox Portfolio Demo](public/PortTwo.jpeg)
-*An example of a responsive, high-performance portfolio generated automatically by the Profoliox AI.*
+### 🎨 Live Portfolio Preview (AI-Generated)
+
+#### 🌟 Executive Hero & Metric Highlights
+![AI Generated Portfolio - Hero](public/Screenshot%202026-10-14%20164808.png)
+*Modern executive hero section with punchy copy, status badges, GitHub/LinkedIn links, and engineering impact metrics.*
+
+#### 💼 Career Journey & Work Experience Timeline
+![AI Generated Portfolio - Work Experience](public/Screenshot%202026-10-14%20164814.png)
+*Structured career timeline highlighting roles, corporate tenures, and quantifiable architectural accomplishments.*
+
+#### 🚀 Selected Works & Production Projects
+![AI Generated Portfolio - Projects](public/Screenshot%202026-10-14%20164821.png)
+*Interactive project showcase cards with tech stack tags, system architecture descriptors, and key metrics.*
+
+#### 🛠️ Skills & Education Matrix
+![AI Generated Portfolio - Skills & Education](public/Screenshot%202026-10-14%20164829.png)
+*Comprehensive technical breakdown by domain (Tools, Backend, Frontend, Cloud/DevOps) alongside academic credentials.*
+
+#### 📬 Collaboration & Direct Contact Callout
+![AI Generated Portfolio - Contact CTA](public/Screenshot%202026-10-14%20164836.png)
+*High-converting contact section with direct email outreach and professional social handles.*
 
 ---
 
