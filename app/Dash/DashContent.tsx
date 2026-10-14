@@ -7,7 +7,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import DarkSpaceTemplate from '../templates/DarkSpaceTemplates';
-
+import ProfessionalTemplate from '../templates/ProfessionalTempltes';
 type Stats = {
     docs: number,
     users: number,
@@ -29,15 +29,16 @@ type ProjectCardProps = {
     image: string;
     stats: Stats;
     isPremium?: boolean;
+    onPreview?: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, stats, isPremium }) => (
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, stats, isPremium, onPreview }) => (
     <motion.div
         whileHover={{ y: -8 }}
         className="group relative bg-[#121212]/40 border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-teal-500/40 transition-all duration-500 shadow-2xl"
     >
         <Link href="/Dash" className="absolute inset-0 z-10" aria-label="View Dashboard"></Link>
-   
+
         <div className="aspect-video relative overflow-hidden bg-zinc-900">
             <img
                 src={image}
@@ -47,9 +48,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, sta
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-        
+
             <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <button className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[11px] font-bold text-white hover:bg-white/20 transition shadow-xl">
+                <button onClick={(e) => { e.stopPropagation(); onPreview?.(); }} className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[11px] font-bold text-white hover:bg-white/20 transition shadow-xl">
                     Live Preview
                 </button>
                 <button className="px-5 py-2.5 bg-teal-500 text-black rounded-full text-[11px] font-bold hover:scale-105 active:scale-95 transition shadow-[0_0_30px_rgba(20,184,166,0.3)]">
@@ -57,7 +58,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, type, date, image, sta
                 </button>
             </div>
 
-    
+
             <div className={`absolute top-4 left-4 px-2.5 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg text-[9px] font-bold uppercase tracking-widest ${isPremium ? 'text-teal-400' : 'text-emerald-400'}`}>
                 {isPremium ? 'Premium Demo' : 'Free'}
             </div>
@@ -102,12 +103,13 @@ const DashboardContent = () => {
 
     const [theme, setTheme] = useState({
         primaryColor: '#14b8a6',
-        accentColor: '#6366f1', 
+        accentColor: '#6366f1',
         fontFamily: 'sans'
     });
 
     const [editableContent, setEditableContent] = useState<any>(null);
-
+    const [previewData, setPreviewData] = useState<any>(null);
+    const [selectedTemplate, setSelectedTemplate] = useState<'Professional' | 'DarkSpace'>('Professional');
     const categories = ["Featured", "New"];
     const [history, setHistory] = useState<any[]>([]);
     useEffect(() => {
@@ -130,7 +132,7 @@ const DashboardContent = () => {
                 }
             }
         }
-        const FetchHistory = async (userId?:string) => {
+        const FetchHistory = async (userId?: string) => {
             const user = userId ? { _id: userId } : JSON.parse(localStorage.getItem('user') || "{}");
             const Token = localStorage.getItem('token');
             console.log("Current User For History", user);
@@ -158,7 +160,7 @@ const DashboardContent = () => {
 
 
     const handleGenerate = async () => {
-      
+
         const token = localStorage.getItem('token');
         if (!token || token === 'undefined') {
             toast.error("Your session has expired. Redirecting to Login...");
@@ -188,16 +190,18 @@ const DashboardContent = () => {
             setResult(response.data);
             setEditableContent(response.data);
             setHistory((prev: any) => [response.data, ...prev]);
+            const portfolioPayload = response.data?.data?.content || response.data?.content || response.data;
+            setPreviewData(portfolioPayload);
             toast.success("Portfolio Generated Successfully!");
-        } catch (error:any){
-           toast.error("Generation Failed. Try Again Later")
+        } catch (error: any) {
+            toast.error("Generation Failed. Try Again Later")
         } finally {
             setLoading(false);
         }
     };
     return (
         <main className="ml-24 pt-28 px-10 pb-20 min-h-screen bg-[#050505] relative overflow-hidden">
-      
+
             <input
                 type="file"
                 ref={fileInputRef}
@@ -301,7 +305,7 @@ const DashboardContent = () => {
                 </div>
             </div>
 
-            
+
             {result && (
                 <div className="mt-12 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-1000">
                     <div className="flex items-center gap-2 mb-6 text-teal-400">
@@ -341,14 +345,14 @@ const DashboardContent = () => {
                         className="bg-[#0C0C0C]/90 backdrop-blur-3xl p-10 md:p-16 rounded-[3rem] border border-white/5 relative overflow-hidden shadow-2xl"
                         style={{ fontFamily: theme.fontFamily === 'mono' ? 'monospace' : theme.fontFamily === 'serif' ? 'Georgia, serif' : 'system-ui, sans-serif' }}
                     >
-                       
+
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-[120px] rounded-full pointer-events-none opacity-20" style={{ backgroundColor: theme.primaryColor }} />
 
-                        
+
                         <div className="absolute top-0 left-0 w-full h-1.5 opacity-50" style={{ backgroundColor: theme.primaryColor, boxShadow: `0 0 20px ${theme.primaryColor}` }} />
 
                         <div className="relative z-10 flex flex-col xl:flex-row gap-12">
-                        
+
                             <div className="flex-1 space-y-10">
                                 <div>
                                     <input
@@ -366,7 +370,7 @@ const DashboardContent = () => {
                                     />
                                 </div>
 
-                              
+
                                 {editableContent?.skills && (
                                     <div>
                                         <div className="flex items-center gap-3 mb-6">
@@ -390,7 +394,7 @@ const DashboardContent = () => {
                                 )}
                             </div>
 
-                        
+
                             {editableContent?.projects && (
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-6">
@@ -515,13 +519,56 @@ const DashboardContent = () => {
                         key={index}
                         title={portfolio.title || portfolio.content?.fullName || "Untitled Portfolio"}
                         type={activeTab}
-                        date={portfolio.createdAt ? new Date(portfolio.createdAt).toDateString(): "Today"}
+                        date={portfolio.createdAt ? new Date(portfolio.createdAt).toDateString() : "Today"}
                         image={portfolio.image || "https://placeholder.com/image.png"}
-                        stats={{ docs: 0, users: 0,shares:0 }}
-                         isPremium={portfolio.isPremium}
+                        stats={{ docs: 0, users: 0, shares: 0 }}
+                        isPremium={portfolio.isPremium}
+                        onPreview={() => setPreviewData(portfolio.content || portfolio)}
                     />
                 ))}
             </motion.div>
+
+            {/* Live Template Preview Modal */}
+            {previewData && (
+                <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md overflow-y-auto">
+                    {/* Top Control Bar */}
+                    <div className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-zinc-950/80 backdrop-blur-xl border-b border-white/10">
+                        <div className="flex items-center gap-3">
+                            <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">Template Style:</span>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => setSelectedTemplate('Professional')}
+                                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${selectedTemplate === 'Professional' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'bg-white/5 text-zinc-400 hover:text-white'}`}
+                                >
+                                    🏢 Professional
+                                </button>
+                                <button
+                                    onClick={() => setSelectedTemplate('DarkSpace')}
+                                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${selectedTemplate === 'DarkSpace' ? 'bg-orange-600 text-white shadow-lg shadow-orange-500/25' : 'bg-white/5 text-zinc-400 hover:text-white'}`}
+                                >
+                                    🌌 Dark Space
+                                </button>
+                            </div>
+                        </div>
+
+                        <button
+                            onClick={() => setPreviewData(null)}
+                            className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-xs font-bold transition flex items-center gap-1.5"
+                        >
+                            ✕ Close Preview
+                        </button>
+                    </div>
+
+                    {/* Rendered Template */}
+                    <div className="w-full">
+                        {selectedTemplate === 'DarkSpace' ? (
+                            <DarkSpaceTemplate data={previewData} />
+                        ) : (
+                            <ProfessionalTemplate data={previewData} />
+                        )}
+                    </div>
+                </div>
+            )}
         </main>
     );
 };
